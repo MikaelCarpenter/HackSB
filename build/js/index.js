@@ -1,1 +1,1 @@
-$(function(){$("#submit").on("click",function(n){n.preventDefault(),$.getJSON("assets/data.json",function(n){console.log(n)})})});
+$(function(){$("#submit").on("click",function(n){n.preventDefault(),$.getJSON("/data",function(n){var t=[],o=$("#DotW").val(),a=$("#time").val();Object.keys(n).map(function(c){for(var e in n[c]){var i=n[c][e][o][a];i||t.push([c,e])}}),console.log(t)})})});
