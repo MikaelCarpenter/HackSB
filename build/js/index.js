@@ -1,1 +1,1 @@
-$(function(){});
+$(function(){$("#submit").on("click",function(n){n.preventDefault(),$.getJSON("assets/data.json",function(n){console.log(n)})})});

@@ -13,6 +13,10 @@ app.get('/', function(req, res) {
 	res.render('index');
 });
 
+// app.post('/data', function(req, res) {
+	
+// })
+
 var server = app.listen(port, function() {
 	console.log('Express server listening on port ' + server.address().port);
 });
