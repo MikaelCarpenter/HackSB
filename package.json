@@ -1,0 +1,23 @@
+{
+  "name": "HackSB",
+  "version": "0.0.1",
+  "main": "app.js",
+  "web": "node app.js",
+  "scripts": {
+   "start": "node app.js",
+   "test": "foreman start"
+  },
+  "dependencies": {
+    "express": "^4",
+    "jade": "^1",
+    "body-parser": "^1"
+  },
+  "devDependencies": {
+    "gulp-jade": "^0.10.0",
+    "gulp-stylus": "^2.0.0",
+    "gulp-uglify": "^1.0.2"
+  },
+  "engines": {
+    "node": "0.10.35"
+  }
+}
