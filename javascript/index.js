@@ -49,7 +49,6 @@ $(function(){
 						}
 					}
 					if(input === 0) {
-						console.log(freeUntil)
 						results.push([value, key, roomSize, freeUntil]);
 					}
 				}
@@ -86,8 +85,6 @@ $(function(){
 		results.map(function(value, index) {
 			if(value[0] === id){
 				displayArray.push(value);
-				console.log(value, value[0]);
-				console.log(displayArray);
 			}
 		})
 		displayArray.map(function(value, index) {
@@ -112,8 +109,8 @@ $(function(){
 	$('#back2').on('click', function(event) {
 		$('.roomsWrap').hide();
 		$('.buildingsWrap').show();
-		$('#room > li').remove();
-		$('#size > li').remove();
-		$('#until > li').remove();
+		$('#room').html('');
+		$('#size').html('');
+		$('#until').html('');
 	})
 });
