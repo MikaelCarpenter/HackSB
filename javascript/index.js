@@ -33,7 +33,7 @@ $(function(){
 		var day = $('#DotW').val();
 		var time = $('#time option:selected').val();
 		$.getJSON( "/data", function(result) {
-			results = [];
+			results = []; //necessary to avoid repeats
 			Object.keys(result).map(function(value, index) {
 				for(var key in result[value]) {
 					var input = result[value][key][day][time];
@@ -107,14 +107,14 @@ $(function(){
 		$('.buildingsWrap').hide();
 		$('.inputWrap').show();
 		$('.titleWrap').show();
-		$('#buildings > li').remove();
+		$('#buildings > li').remove(); // removes the <li>s from the ul
 	})
 
 	$('#back2').on('click', function(event) {
 		$('.roomsWrap').hide();
 		$('.buildingsWrap').show();
-		$('#room > li').remove();
-		$('#size > li').remove();
-		$('#until > li').remove();
+		$('#room > li').remove(); // removes the <li>s from the ul
+		$('#size > li').remove(); // removes the <li>s from the ul
+		$('#until > li').remove(); // removes the <li>s from the ul
 	})
 });
