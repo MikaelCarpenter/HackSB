@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var fs = require('fs');
-var obj = JSON.parse(fs.readFileSync('assets/W15data.json', 'utf8'));
+var obj = JSON.parse(fs.readFileSync('build/assets/W15data.json', 'utf8'));
 var port = Number(process.env.PORT || 1989);
 
 var app = express();

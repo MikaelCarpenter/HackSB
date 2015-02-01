@@ -6,8 +6,8 @@ $(function(){
 	var time = $('#time').val();
 	$('#submit').on('click', function(event){
 		event.preventDefault();
+		console.log('hi');
 		$.getJSON( "/data", function(result) {
-
 			Object.keys(result).map(function(value, index) {
 				for(var key in result[value]) {
 					var input = result[value][key][day][time];
@@ -31,6 +31,7 @@ $(function(){
 			var resultsLength = results.length;
 
 			for(var i = 0; i < resultsLength; i++) {
+				console.log('hi');
 				buildingsRaw.push(results[i][0]);
 			}
 
@@ -47,8 +48,10 @@ $(function(){
 				console.log('<li id=\'' + buildingName + '\'>' + buildingName + '</li>');
 				$('#buildings').append('<li id=\'' + buildingName + '\' class=\'building\'>' + buildingName + '</li>');
 			}
+
+			$('.inputWrap').hide();
+			$('.titleWrap').hide();	
+			$('.resultsWrap').show();
 		});
 	});
-
-	$('#')
 });
