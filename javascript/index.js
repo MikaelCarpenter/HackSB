@@ -32,10 +32,8 @@ $(function(){
 	$('#submit').on('click', function(event){
 		var day = $('#DotW').val();
 		var time = $('#time option:selected').val();
-		$('#room').html('');
-		$('#size').html('');
-		$('#until').html('');
 		$.getJSON( "/data", function(result) {
+			results = [];
 			Object.keys(result).map(function(value, index) {
 				for(var key in result[value]) {
 					var input = result[value][key][day][time];
@@ -51,6 +49,7 @@ $(function(){
 							var freeUntil = '20';
 						}
 					}
+
 					if(input === 0) {
 						results.push([value, key, roomSize, freeUntil]);
 					}
@@ -68,6 +67,8 @@ $(function(){
 			    	buildings.push(el);
 			    }
 			});
+
+			buildings = buildings.sort(); // alphabetizes
 
 			var buildingsLength = buildings.length;
 
@@ -112,8 +113,8 @@ $(function(){
 	$('#back2').on('click', function(event) {
 		$('.roomsWrap').hide();
 		$('.buildingsWrap').show();
-		$('#room').html('');
-		$('#size').html('');
-		$('#until').html('');
+		$('#room > li').remove();
+		$('#size > li').remove();
+		$('#until > li').remove();
 	})
 });
