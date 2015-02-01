@@ -1,10 +1,12 @@
 $(function(){
+	var results = [];
+	var buildingsRaw = [];
+	var buildings = [];
+	var day = $('#DotW').val();
+	var time = $('#time').val();
 	$('#submit').on('click', function(event){
 		event.preventDefault();
 		$.getJSON( "/data", function(result) {
-			var results = [];
-			var day = $('#DotW').val();
-			var time = $('#time').val();
 
 			Object.keys(result).map(function(value, index) {
 				for(var key in result[value]) {
@@ -26,7 +28,27 @@ $(function(){
 				}
 			});
 
-			console.log(results[0]);
+			var resultsLength = results.length;
+
+			for(var i = 0; i < resultsLength; i++) {
+				buildingsRaw.push(results[i][0]);
+			}
+
+			$.each(buildingsRaw, function(i, el){
+			    if($.inArray(el, buildings) === -1) {
+			    	buildings.push(el);
+			    }
+			});
+
+			var buildingsLength = buildings.length;
+
+			for(var i = 0; i < buildingsLength; i++){
+				var buildingName = buildings[i];
+				console.log('<li id=\'' + buildingName + '\'>' + buildingName + '</li>');
+				$('#buildings').append('<li id=\'' + buildingName + '\' class=\'building\'>' + buildingName + '</li>');
+			}
 		});
 	});
+
+	$('#')
 });
