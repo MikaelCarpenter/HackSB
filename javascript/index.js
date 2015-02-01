@@ -32,6 +32,9 @@ $(function(){
 	$('#submit').on('click', function(event){
 		var day = $('#DotW').val();
 		var time = $('#time option:selected').val();
+		$('#room').html('');
+		$('#size').html('');
+		$('#until').html('');
 		$.getJSON( "/data", function(result) {
 			Object.keys(result).map(function(value, index) {
 				for(var key in result[value]) {
