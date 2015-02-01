@@ -29,27 +29,27 @@ $(function(){
 		19.5: '7:30PM',
 		20: '8:00PM'
 	}
-	var day = $('#DotW').val();
-	var time = $('#time').val();
 	$('#submit').on('click', function(event){
-		event.preventDefault();
+		var day = $('#DotW').val();
+		var time = $('#time option:selected').val();
 		$.getJSON( "/data", function(result) {
 			Object.keys(result).map(function(value, index) {
 				for(var key in result[value]) {
 					var input = result[value][key][day][time];
 					var roomSize = result[value][key].size;
-					var timeStepsLeft = (19.5 - time);
-					for (var i=0; i <= timeStepsLeft; i+=0.5) {
-						var timeCheck = parseFloat(time) + parseFloat(i);
+					var timeStepsLeft = (19.5 - parseFloat(time));
+					for (var i=0.0; i <= timeStepsLeft; i+=0.5) {
+						var timeCheck = parseFloat(time) + i;
 						var timeString = timeCheck.toString();
 						if(result[value][key][day][timeString] === 1) {
-							var freeUntil = timeCheck;
+							var freeUntil = timeString;
 							i = timeStepsLeft + 1;
 						}else if(i === timeStepsLeft){
 							var freeUntil = '20';
 						}
 					}
 					if(input === 0) {
+						console.log(freeUntil)
 						results.push([value, key, roomSize, freeUntil]);
 					}
 				}
@@ -86,11 +86,13 @@ $(function(){
 		results.map(function(value, index) {
 			if(value[0] === id){
 				displayArray.push(value);
+				console.log(value, value[0]);
+				console.log(displayArray);
 			}
 		})
 		displayArray.map(function(value, index) {
-			var time = value[3];
-			var hour = numToTime[time];
+			var until = value[3];
+			var hour = numToTime[until];
 			$('#room').append('<li>' + value[1] + '</li>');
 			$('#size').append('<li>' + value[2] + '</li>');
 			$('#until').append('<li>' + hour + '</li>');
