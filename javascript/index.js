@@ -22,7 +22,7 @@ $(function(){
 							var freeUntil = '20';
 						}
 					}
-					if(!input) {
+					if(input === 0) {
 						results.push([value, key, roomSize, freeUntil]);
 					}
 				}
