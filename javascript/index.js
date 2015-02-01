@@ -43,7 +43,6 @@ $(function(){
 						var timeCheck = parseFloat(time) + parseFloat(i);
 						var timeString = timeCheck.toString();
 						if(result[value][key][day][timeString] === 1) {
-							console.log('hi');
 							var freeUntil = timeCheck;
 							i = timeStepsLeft + 1;
 						}else if(i === timeStepsLeft){
