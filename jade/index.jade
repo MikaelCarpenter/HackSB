@@ -48,6 +48,19 @@ block content
 			.btnWrap
 				input(type='submit' id='submit' value='Find a Spot')
 
-		.resultsWrap(style='display: none')
+		.buildingsWrap(style='display: none')
+			.headerWrap
+				h2 Click a building to see available rooms
 			.listWrap
 				ul#buildings
+
+		.roomsWrap(style='display: none')
+			.roomWrap.third
+				label(for='room') Room #:
+				ul#room
+			.sizeWrap.third
+				label(for='size') Room Size:
+				ul#size
+			.untilWrap.third
+				label(for='until') Free Until:
+				ul#until

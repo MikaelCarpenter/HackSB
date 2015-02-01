@@ -10,7 +10,7 @@ body {
 body .bg {
   position: fixed;
   left: 0;
-  right: 0;
+  top: 0;
   z-index: 1;
   display: block;
   background: url("/assets/images/bg1.jpg") center center no-repeat;
@@ -23,13 +23,10 @@ body .bg {
   filter: blur(2px);
 }
 body .content {
-  position: fixed;
-  left: 0;
-  right: 0;
+  position: relative;
   z-index: 9999;
   margin-left: 20px;
   margin-right: 20px;
-  overflow: scroll;
 }
 body .content .titleWrap h1 {
   color: #ffd922;
@@ -90,19 +87,47 @@ body .content .inputWrap .btnWrap input:hover {
   cursor: pointer;
   border: 3px solid #ffd922;
 }
-body .content .resultsWrap {
-  width: 40%;
-  height: 500px;
+body .content .buildingsWrap {
+  width: 600px;
   background-color: rgba(0,0,0,0.3);
   color: #ffd922;
   border: 2px solid #000;
   border-radius: 15px;
   margin: 100px auto;
-  overflow: scroll;
 }
-body .content .resultsWrap .listWrap #buildings {
+body .content .buildingsWrap .headerWrap h2 {
+  color: #ffd922;
+  text-shadow: 2px 1px rgba(0,0,0,0.7);
+}
+body .content .buildingsWrap .listWrap #buildings {
   list-style-type: none;
 }
-body .content .resultsWrap .listWrap #buildings li {
-  font-size: 30px;
+body .content .buildingsWrap .listWrap #buildings li {
+  font-size: 24px;
+}
+body .content .buildingsWrap .listWrap #buildings .building:hover {
+  cursor: pointer;
+}
+body .content .roomsWrap {
+  width: 600px;
+  background-color: rgba(0,0,0,0.3);
+  color: #ffd922;
+  border: 2px solid #000;
+  border-radius: 15px;
+  margin: 100px auto;
+  padding: 0px 5px;
+}
+body .content .roomsWrap .third {
+  width: 190px;
+  display: inline-block;
+}
+body .content .roomsWrap label {
+  verticle-align: top;
+}
+body .content .roomsWrap ul {
+  list-style-type: none;
+}
+body .content .roomsWrap #room,
+body .content .roomsWrap #size {
+  margin-right: 10px;
 }

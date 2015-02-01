@@ -10,7 +10,7 @@ body
 	.bg
 		position fixed
 		left 0
-		right 0
+		top 0
 		z-index 1
 
 		display block
@@ -25,13 +25,10 @@ body
 		filter blur(2px)
 		
 	.content
-		position fixed
-		left 0
-		right 0
+		position relative
 		z-index 9999
 		margin-left 20px
 		margin-right 20px
-		overflow scroll
 	
 		.titleWrap
 			h1
@@ -94,20 +91,49 @@ body
 						cursor pointer
 						border 3px solid #FFD922
 				
-		.resultsWrap
-			width 40%
-			height 500px
+		.buildingsWrap
+			width 600px
 			background-color rgba(0,0,0,0.3)
 			color #FFD922
 			border 2px solid #000
 			border-radius 15px
 			margin 100px auto
-			overflow scroll
+			
+			.headerWrap
+				h2
+					color #FFD922
+					text-shadow 2px 1px rgba(0,0,0,0.7)
 			
 			.listWrap
 				#buildings
 					list-style-type none
 					
 					li
-						font-size 30px
+						font-size 24px
+						
+					.building
+						&:hover
+							cursor pointer
+							
+		.roomsWrap
+			width 600px
+			background-color rgba(0,0,0,0.3)
+			color #FFD922
+			border 2px solid #000
+			border-radius 15px
+			margin 100px auto
+			padding 0px 5px
+			
+			.third
+				width 190px
+				display inline-block
+
+			label
+				verticle-align top
+			
+			ul
+				list-style-type none
+				
+			#room, #size
+				margin-right 10px
 						
