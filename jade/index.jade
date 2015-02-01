@@ -1,49 +1,53 @@
 extends layout
 
 block content
-	.titleWrap
-		h1 Study Spot
-		p Find an empty room to study
+	.bg
 
-	.inputWrap
-		.dotwWrap
-			select(id='DotW')
-				option(value="m") Monday
-				option(value="t") Tuesday
-				option(value="w") Wednesday
-				option(value="r") Thursday
-				option(value="f") Friday
+	.content
+		.titleWrap
+			h1 Study Spot
+			//- img(src='/assets/images/logo2.png' alt='logo')
+			p Find an empty room to study
 
-		.timeWrap
-			select(id='time')
-				option(value="8.0") 8:00AM
-				option(value="8.5") 8:30AM
-				option(value="9.0") 9:00AM
-				option(value="9.5") 9:30AM
-				option(value="10.0") 10:00AM
-				option(value="10.5") 10:30AM
-				option(value="11.0") 11:00AM
-				option(value="11.5") 11:30AM
-				option(value="12.0") 12:00PM
-				option(value="12.5") 12:30PM
-				option(value="13.0") 1:00PM
-				option(value="13.5") 1:30PM
-				option(value="14.0") 2:00PM
-				option(value="14.5") 2:30PM
-				option(value="15.0") 3:00PM
-				option(value="15.5") 3:30PM
-				option(value="16.0") 4:00PM
-				option(value="16.5") 4:30PM
-				option(value="17.0") 5:00PM
-				option(value="17.5") 5:30PM
-				option(value="18.0") 6:00PM
-				option(value="18.5") 6:30PM
-				option(value="19.0") 7:00PM
-				option(value="19.5") 7:30PM
+		.inputWrap
+			.dotwWrap
+				select(id='DotW')
+					option(value="m") Monday
+					option(value="t") Tuesday
+					option(value="w") Wednesday
+					option(value="r") Thursday
+					option(value="f") Friday
 
-		.btnWrap
-			input(type='submit' id='submit' value='Find a Spot')
+			.timeWrap
+				select(id='time')
+					option(value="8.0") 8:00AM
+					option(value="8.5") 8:30AM
+					option(value="9.0") 9:00AM
+					option(value="9.5") 9:30AM
+					option(value="10.0") 10:00AM
+					option(value="10.5") 10:30AM
+					option(value="11.0") 11:00AM
+					option(value="11.5") 11:30AM
+					option(value="12.0") 12:00PM
+					option(value="12.5") 12:30PM
+					option(value="13.0") 1:00PM
+					option(value="13.5") 1:30PM
+					option(value="14.0") 2:00PM
+					option(value="14.5") 2:30PM
+					option(value="15.0") 3:00PM
+					option(value="15.5") 3:30PM
+					option(value="16.0") 4:00PM
+					option(value="16.5") 4:30PM
+					option(value="17.0") 5:00PM
+					option(value="17.5") 5:30PM
+					option(value="18.0") 6:00PM
+					option(value="18.5") 6:30PM
+					option(value="19.0") 7:00PM
+					option(value="19.5") 7:30PM
 
-	.resultsWrap
-		.listWrap
-			ul#buildings
+			.btnWrap
+				input(type='submit' id='submit' value='Find a Spot')
+
+		.resultsWrap
+			.listWrap
+				ul#buildings
