@@ -100,4 +100,19 @@ $(function(){
 		$('.buildingsWrap').hide();
 		$('.roomsWrap').show();
 	})
+
+	$('#back1').on('click', function(event) {
+		$('.buildingsWrap').hide();
+		$('.inputWrap').show();
+		$('.titleWrap').show();
+		$('#buildings > li').remove();
+	})
+
+	$('#back2').on('click', function(event) {
+		$('.roomsWrap').hide();
+		$('.buildingsWrap').show();
+		$('#room > li').remove();
+		$('#size > li').remove();
+		$('#until > li').remove();
+	})
 });

@@ -51,10 +51,13 @@ block content
 		.buildingsWrap(style='display: none')
 			.headerWrap
 				h2 Click a building to see available rooms
+				i(class="fa fa-times" id='back1')
 			.listWrap
 				ul#buildings
 
 		.roomsWrap(style='display: none')
+			.headerWrap
+				i(class="fa fa-times" id='back2')
 			.roomWrap.third
 				label(for='room') Room #:
 				ul#room
