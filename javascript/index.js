@@ -27,7 +27,7 @@ $(function(){
 		18.5: '6:30PM',
 		19.0: '7:00PM',
 		19.5: '7:30PM',
-		20: '8:00PM'
+		20.0: '8:00PM'
 	}
 	$('#submit').on('click', function(event){
 		var day = $('#DotW').val();
@@ -49,9 +49,11 @@ $(function(){
 						if(result[value][key][day][timeString] === 1) {
 							var freeUntil = timeString;
 							i = timeStepsLeft + 1;
+							console.log(freeUntil);
 						}else if(i === timeStepsLeft){
-							var freeUntil = '20';
+							var freeUntil = '20.0';
 						}
+						// console.log(freeUntil);
 					}
 
 					if(input === 0) {
