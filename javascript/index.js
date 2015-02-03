@@ -97,7 +97,7 @@ $(function(){
 		})
 		displayArray.map(function(value, index) {
 			var until = value[3];
-			var hour = numToTime[until];
+			var hour = numToTime[parseFloat(until)];
 			$('#room').append('<li>' + value[1] + '</li>');
 			$('#size').append('<li>' + value[2] + '</li>');
 			$('#until').append('<li>' + hour + '</li>');
