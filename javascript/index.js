@@ -91,6 +91,7 @@ $(function(){
 	$('#buildings').on('click', '.building', function(event) {
 		var id = $(this).attr('id');
 		var displayArray = [];
+		var buildingName = '';
 		results.map(function(value, index) {
 			if(value[0] === id){
 				displayArray.push(value);
@@ -99,11 +100,13 @@ $(function(){
 		displayArray.map(function(value, index) {
 			var until = value[3];
 			var hour = numToTime[parseFloat(until)];
+			buildingName = value[0];
 			$('#room').append('<li>' + value[1] + '</li>');
 			$('#size').append('<li>' + value[2] + '</li>');
 			$('#until').append('<li>' + hour + '</li>');
 		})
 
+		$('#buildingName').append(buildingName);
 		$('.buildingsWrap').hide();
 		$('.roomsWrap').show();
 	})
@@ -118,6 +121,7 @@ $(function(){
 	$('#back2').on('click', function(event) {
 		$('.roomsWrap').hide();
 		$('.buildingsWrap').show();
+		$('#buildingName').html('');
 		$('#room > li').remove(); // removes the <li>s from the ul
 		$('#size > li').remove(); // removes the <li>s from the ul
 		$('#until > li').remove(); // removes the <li>s from the ul

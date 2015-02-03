@@ -141,8 +141,15 @@ body .content .roomsWrap {
   margin: 100px auto;
   padding: 0px 5px;
 }
+body .content .roomsWrap .headerWrap h2 {
+  color: #ffd922;
+  text-shadow: 2px 1px rgba(0,0,0,0.7);
+  display: inline-block;
+}
 body .content .roomsWrap .headerWrap #back2 {
   float: right;
+  display: inline-block;
+  margin-top: 10px;
   margin-right: 10px;
   font-size: 20px;
 }
