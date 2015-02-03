@@ -42,6 +42,10 @@ $(function(){
 					for (var i=0.0; i <= timeStepsLeft; i+=0.5) {
 						var timeCheck = parseFloat(time) + i;
 						var timeString = timeCheck.toString();
+						//making sure 10 goes to 10.0
+						if(timeString.indexOf('.') === -1){
+							timeString += '.0';
+						}
 						if(result[value][key][day][timeString] === 1) {
 							var freeUntil = timeString;
 							i = timeStepsLeft + 1;
