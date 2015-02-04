@@ -51,6 +51,33 @@ def lineToTable(dic, line):
     if (s.lower() == "musicllch"):
         roomNum = "LLCH"
         building = "MUSIC"
+    elif (s.lower() == "embarhall"):
+        roomNum = "MAIN"
+        building = "EMBAR HALL"
+    elif (s.lower() == "campbhall"):
+        roomNum = "MAIN"
+        building = "CAMPB HALL"
+    elif (s.lower() == "musicghall"):
+        roomNum = "GHALL"
+        building = "MUSIC"
+    elif (s.lower() == "pllokthtr"):
+        roomNum = "THTR"
+        building = "PLLOK"
+    elif (s.lower() == "pllokstg"):
+        roomNum = "STG"
+        building = "PLLOK"
+    elif (s.lower() == "iv thea2"):
+        roomNum = "THEA2"
+        building = "IV THEA"
+    elif (s.lower() == "iv thea1"):
+        roomNum = "THEA1"
+        building = "IV THEA"
+    elif (s.lower().find("msb") != -1):
+        return dic
+    elif (s.lower() == "scrimfield"):
+        return dic
+    elif (s.lower().find("hardr") != -1):
+        return dic
     else:
         n = re.search(" ", s)
         if n:
@@ -125,9 +152,33 @@ def timeConvert(dic, timeStr):
     
     return dic
 
+def parse2(source):
+    dic = {}
+    startIndex = source.lower().find("UCSB Building Location Code Translations".lower())
+    startIndex = startIndex + 1 + source[startIndex + 1:].lower().find("<tr>")
+    startIndex = startIndex + 1 + source[startIndex + 1:].lower().find("<tr>") #first row in list
+    endIndex = startIndex + 1 + source[startIndex + 1:].lower().find("</tr>")
+    while (source[startIndex:endIndex].lower().find("<td>") != -1):
+        dic = makeName(source[startIndex:endIndex], dic)
+        startIndex = endIndex + source[endIndex:].lower().find("<tr>")
+        endIndex = startIndex + 1 + source[startIndex + 1:].lower().find("</tr>")
+
+    return dic
+
+def makeName(source, dic):
+    keyStart = source.lower().find("<td>") + 4
+    keyEnd = source.lower().find("</td>")
+    valueStart = keyEnd + source[keyEnd:].lower().find("<td>") + 4
+    valueEnd = keyEnd + 1 + source[keyEnd + 1:].lower().find("</td>")
+    key = source[keyStart:keyEnd].strip().lower()
+    value = source[valueStart:valueEnd].strip()
+    dic[key] = value
+    return dic
+
 courseList = ["ANTH", "ART", "ART  CS ", "ARTHI", "ARTST", "AS AM", "ASTRO", "BIOL", "BIOL CS ", "BMSE", "BL ST", "CH E", "CHEM CS ", "CHEM", "CH ST", "CHIN", "CLASS", "COMM", "C LIT", "CMPSC", "CMPSCCS ", "CNCSP", "DANCE", "DYNS", "EARTH", "EACS", "EEMB", "ECON", "ED", "ECE", "ENGR", "ENGL", "ESM", "ENV S", "FEMST", "FAMST", "FLMST", "FR", "GEN S   ", "GEN SCS ", "GEOG", "GER", "GPS", "GLOBL", "GREEK", "HEB", "HIST", "INT", "INT  CS ", "ITAL", "JAPAN", "KOR", "LATIN", "LAIS", "LING", "LIT     ", "LIT  CS ", "MARSC", "MATRL", "MATH", "MATH CS ", "ME", "MAT", "ME ST", "MES", "MS", "MCDB", "MUS", "MUS  CS ", "MUS A", "PHIL", "PHYS", "PHYS CS ", "POL S", "PORT", "PSY", "RG ST", "RENST", "SLAV", "SOC", "SPAN", "SHS", "PSTAT", "TMP", "THTR", "WRIT"]
 masterDict = {}
 url = "https://my.sa.ucsb.edu/public/curriculum/coursesearch.aspx"
+url2 = "https://registrar.sa.ucsb.edu/locationcodes.aspx"
 br = mechanize.Browser()
 br.set_handle_robots(False)
 
@@ -146,6 +197,40 @@ for course in courseList:
     #building -> room_num -> day_of_the_week -> time
     for i in range(len(test)):
         masterDict = lineToTable(masterDict, test[i])
+
+
+r = br.open(url2)
+html = r.read()
+nameDic = parse2(html)
+nameDic['387'] = 'Modular Classrooms (387)'
+
+for building in masterDict:
+    try:
+        nameDic[building.lower().strip()]
+    except KeyError:
+        if (building.lower() == "pllok"):
+            masterDict[building]['name'] = "Pollock Theater"
+        elif (building.lower() == "engr"):
+            masterDict[building]['name'] = "Engineering II"
+        elif (building.lower() == "ed"):
+            masterDict[building]['name'] = "Education"
+        elif (building.lower() == "ssms"):
+            masterDict[building]['name'] = "Social Sciences and Media Studies"
+        elif (building.lower() == "iv thea"):
+            masterDict[building]['name'] = "IV Theater"
+        elif (building.lower() == "iv"):
+            masterDict[building]['name'] = "IV Theater"
+        elif (building.lower() == "psy-e"):
+            masterDict[building]['name'] = "Psychology East"
+        elif (building.lower() == "mrl"):
+            masterDict[building]['name'] = "Materials Research Lab"
+        else:
+            masterDict[building]['name'] = building
+    else:
+        masterDict[building]['name'] = nameDic[building.lower().strip()]
+
+for building in masterDict:
+    print building + ": " + masterDict[building]['name']
 
 with open('data2.json', 'wb') as fp:
     json.dump(masterDict, fp)
