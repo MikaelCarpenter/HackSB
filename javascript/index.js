@@ -36,6 +36,7 @@ $(function(){
 			results = []; //necessary to avoid repeats
 			Object.keys(result).map(function(value, index) {
 				for(var key in result[value]) {
+					var building = result[value][key].name;
 					var input = result[value][key][day][time];
 					var roomSize = result[value][key].size;
 					var timeStepsLeft = (19.5 - parseFloat(time));
@@ -56,7 +57,7 @@ $(function(){
 					}
 
 					if(input === 0) {
-						results.push([value, key, roomSize, freeUntil]);
+						results.push([building, key, roomSize, freeUntil]);
 					}
 				}
 			});

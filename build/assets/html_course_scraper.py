@@ -208,26 +208,28 @@ for building in masterDict:
     try:
         nameDic[building.lower().strip()]
     except KeyError:
-        if (building.lower() == "pllok"):
-            masterDict[building]['name'] = "Pollock Theater"
-        elif (building.lower() == "engr"):
-            masterDict[building]['name'] = "Engineering II"
-        elif (building.lower() == "ed"):
-            masterDict[building]['name'] = "Education"
-        elif (building.lower() == "ssms"):
-            masterDict[building]['name'] = "Social Sciences and Media Studies"
-        elif (building.lower() == "iv thea"):
-            masterDict[building]['name'] = "IV Theater"
-        elif (building.lower() == "iv"):
-            masterDict[building]['name'] = "IV Theater"
-        elif (building.lower() == "psy-e"):
-            masterDict[building]['name'] = "Psychology East"
-        elif (building.lower() == "mrl"):
-            masterDict[building]['name'] = "Materials Research Lab"
-        else:
-            masterDict[building]['name'] = building
+        for room in masterDict[building]:
+            if (building.lower() == "pllok"):
+                masterDict[building][room]['name'] = "Pollock Theater"
+            elif (building.lower() == "engr"):
+                masterDict[building][room]['name'] = "Engineering II"
+            elif (building.lower() == "ed"):
+                masterDict[building][room]['name'] = "Education"
+            elif (building.lower() == "ssms"):
+                masterDict[building][room]['name'] = "Social Sciences and Media Studies"
+            elif (building.lower() == "iv thea"):
+                masterDict[building][room]['name'] = "IV Theater"
+            elif (building.lower() == "iv"):
+                masterDict[building][room]['name'] = "IV Theater"
+            elif (building.lower() == "psy-e"):
+                masterDict[building][room]['name'] = "Psychology East"
+            elif (building.lower() == "mrl"):
+                masterDict[building][room]['name'] = "Materials Research Lab"
+            else:
+                masterDict[building][room]['name'] = building
     else:
-        masterDict[building]['name'] = nameDic[building.lower().strip()]
+        for room in masterDict[building]:
+            masterDict[building][room]['name'] = nameDic[building.lower().strip()]
 
 for building in masterDict:
     print building + ": " + masterDict[building]['name']
